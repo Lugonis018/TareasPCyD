@@ -16,7 +16,7 @@ import javax.websocket.server.ServerEndpoint;
  *
  * @author AUTONOMA
  */
-@ServerEndpoint("/endpoint")
+@ServerEndpoint("/holaWebsk")
 public class HolaWebskEP {
     
     static final Logger LOGGER= Logger.getLogger(HolaWebskEP.class.getName());

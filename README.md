@@ -1,2 +1,2 @@
-# ProyectosProgra
-Este Repositorio es para proyectos de Programación
+# TareasPCyD
+Programación Concurrente y Distribuida - Tareas

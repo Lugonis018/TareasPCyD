@@ -10,15 +10,15 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script type="text/javascript">
-            var wsUrl = "ws://localhost:8083/websockets/HolaWebskEP";
+            var wsUrl = "ws://localhost:8083/WebSockets/holaWebsk";
 
             var websocket = new WebSocket(wsUrl);
 
-            websocket.onopne = function (evt) {
+            websocket.onopen = function (evt) {
                 log("Conectando...");
 
             };
-            websocket.onmensaje = function (evt) {
+            websocket.onmessage = function (evt) {
                 log("Mensaje recibido: " + evt.data);
             };
             websocket.onerror = function (evt) {
