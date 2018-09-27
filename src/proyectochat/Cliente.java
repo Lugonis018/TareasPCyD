@@ -132,7 +132,7 @@ public class Cliente extends javax.swing.JApplet implements ActionListener,Runna
             
             try
             {
-                Socket skCliente =new Socket("localhost",8888);
+                Socket skCliente =new Socket("Aquí colocar la IP de un servidor, que solo sirva de servidor",8888);
                 Envio Datos=new Envio();
                 Datos.setNick(txtNick.getText());
                 Datos.setIp(txtIp.getText());
