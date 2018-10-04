@@ -5,11 +5,16 @@
  */
 package websockets;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.websocket.EncodeException;
 import javax.websocket.OnClose;
 import javax.websocket.OnMessage;
 import javax.websocket.OnOpen;
+import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
 /**
@@ -20,19 +25,24 @@ import javax.websocket.server.ServerEndpoint;
 public class HolaWebskEP {
     
     static final Logger LOGGER= Logger.getLogger(HolaWebskEP.class.getName());
+    private static final List<Session> conectados=new ArrayList<>();
     @OnOpen
-    public void IniciaConexion(){
+    public void IniciaConexion(Session sesion){
         LOGGER.info("Iniciando conexión");
-        
+        conectados.add(sesion);
     }
     @OnClose
-    public void finConexion(){
+    public void finConexion(Session sesion){
         LOGGER.info("Terminando conexion");
+        conectados.remove(sesion);
     }
     @OnMessage
-    public String onMessage(String mensaje) {
-        LOGGER.log(Level.INFO,"Recibinedo mensaje:{0}",mensaje);
-        return "Hola a todos con este mensaje"+mensaje;
+    public void onMessage(String mensaje) throws IOException, EncodeException {
+        LOGGER.log(Level.INFO,"Recibiendo mensaje:{0}",mensaje);
+        for (Session sesion:conectados){
+            sesion.getBasicRemote().sendText(mensaje);
+        }
+        
     }
     
 }
