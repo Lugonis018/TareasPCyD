@@ -5,17 +5,31 @@
  */
 package Util;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 /**
  *
  * @author AUTONOMA
  */
 public class ConexionBD {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static Connection getConexionBD(){
+        Connection cnn=null;
+        try
+        {
+            Class.forName("com.mysql.jdbc.Driver");
+            cnn=DriverManager.getConnection("jdbc:mysql://127.0.0.1/bd_registro","root","");
+            System.out.println("Conectado a la base de datos");
+        }catch(Exception e)
+        {
+            System.out.println("No conectado "+e.getMessage());
+        }
+        return cnn;
+        
+    }
     public static void main(String[] args) {
-        // TODO code application logic here
+          getConexionBD();
     }
     
 }

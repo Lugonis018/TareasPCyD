@@ -5,6 +5,8 @@
  */
 package controlador;
 
+import Modelo.Bean.UsuarioBean;
+import Modelo.DAO.UsuarioDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,36 +14,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author AUTONOMA
- */
 public class UsuarioServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet UsuarioServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet UsuarioServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String opcad = request.getParameter("op");
+        int op = Integer.parseInt(opcad);
+        String pagina = "";
+
+        switch (op) {
+            case 1: {
+                String usuario = request.getParameter("txtusu");
+                String clave = request.getParameter("txtclave");
+
+                UsuarioBean objUsuarioBean = new UsuarioBean();
+                objUsuarioBean.setUsuario(usuario);
+                objUsuarioBean.setClave(clave);
+
+                UsuarioDAO objUsuarioDAO = new UsuarioDAO();
+
+                boolean estado = objUsuarioDAO.ValidarUsuario(objUsuarioBean);
+                System.out.println("Estado: " + estado);
+
+                if (estado) {
+                    pagina = "/Vista/FrmPrincipalUsuario.jsp";
+                } else {
+                    pagina = "/Vista/FrmLoginUsuario.jsp";
+                    request.setAttribute("mensaje", "Usuario y clave incorrecto!");
+                }
+                break;
+            }
         }
+        getServletContext().getRequestDispatcher(pagina).forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
