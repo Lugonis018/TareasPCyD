@@ -4,9 +4,17 @@
         <servlet-name>UsuarioServlet</servlet-name>
         <servlet-class>controlador.UsuarioServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PersonaServlet</servlet-name>
+        <servlet-class>controlador.PersonaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioServlet</servlet-name>
         <url-pattern>/usuarioservlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PersonaServlet</servlet-name>
+        <url-pattern>/personaservlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
