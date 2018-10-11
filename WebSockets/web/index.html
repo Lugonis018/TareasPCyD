@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script type="text/javascript">
+            var wsUrl = "ws://"+location.host+"/WebSockets/holaWebsk";
+
+            var websocket = new WebSocket(wsUrl);
+
+            websocket.onopen = function (evt) {
+                log("Conectando...");
+
+            };
+            
+            websocket.onmessage = function (evt) {
+                log("Mensaje recibido: " + evt.data);
+                
+                
+            };
+            websocket.onerror = function (evt) {
+                log("oho! .... error" + evt.data);
+            };
+
+            function enviarMensaje() {
+                websocket.send(mensajeTXT.value);
+                log("Enviando: " + mensajeTXT.value);
+            }
+            function log(mensaje) {
+                var logDiv = document.getElementById("log");
+                logDiv.innerHTML += (mensaje + '<br/>')
+            }
+        </script>
+    </head>
+    <body>
+        <div>Ejercicio WebSocket</div>
+        <form>
+            <label for="mensajeTXT"> Mensaje:</label>
+            <input id="mensajeTXT" name="mensajeTXT"><br/>
+            <button type="button" onclick="enviarMensaje()">Enviar</button>
+
+        </form>
+        <div id="log">
+
+        </div>
+    </body>
+</html>

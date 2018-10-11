@@ -1,2 +1,2 @@
-# TareaCabina
-Otra programa para CYBERCAFE
+# TareasPCyD
+Programación Concurrente y Distribuida - Tareas
