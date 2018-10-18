@@ -40,31 +40,61 @@ public class ServletConsumeClient extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServletConsumeClient</title>");            
+            out.println("<title>Operaciones para Parcial</title>");            
             out.println("</head>");
             out.println("<body>");
             out.println("<center>");
             out.println("<h1>Calculando Operaciones</h1>");
             out.println("<form method=get>");
-            out.println("<input type='text' name='areaCua'>");
-            out.println("<select name='medidaCua'>"
-                    + "<option>Metros</option>"
-                    + "<option>Centrimentos</option>"
-                    + "</select>");
-            out.println("<input type='text' name='baseTrian'>");
-            out.println("<input type='text' name='alturaTrian'>");
-            out.println("<select name='medidaTrian'>"
-                    + "<option>Metros</option>"
-                    + "<option>Centrimentos</option>"
-                    + "</select>");
-            
-            out.println("<input type='text' name='diagonalRect'>");
-            out.println("<input type='text' name='alturaRect'>");
-            out.println("<select name='medidaRect'>"
-                    + "<option>Metros</option>"
-                    + "<option>Centrimentos</option>"
-                    + "</select>");
-            out.println("<input type='submit' value='Calcular Operaciones'>");
+            out.println("<table id=tabla border=1 "
+                    + "style='HEIGHT:100%;WIDTH:100%;'"
+                    + ">");
+            out.println("<tr align='center'>"
+                        + "<td colspan=6>Operaciones</td>"
+                    + "</tr>"
+                        + "<td colspan=2>Cuadrado</td>"
+                        + "<td colspan=2>Triangulo</td>"
+                        + "<td colspan=2>Rectangulo</td>"
+                    + "<tr>"
+                        + "<td colspan=2>Calcular el lado y perimetro<br>Ingresando:</td>"
+                        + "<td colspan=2>Calcular el perimetro y area<br>Ingresando:</td>"
+                        + "<td colspan=2>Calcular la base, el perimetro y el area<br>Ingresando:</td>"
+                    + "</tr>"
+                        +"<td>Area:</td>"
+                        +"<td><input type='text' name='areaCua'></td>"
+                        +"<td>Base:</td>"
+                        +"<td><input type='text' name='baseTrian'></td>"
+                        +"<td>Diagonal:</td>"
+                        +"<td><input type='text' name='diagonalRect'></td>"
+                    + "<tr>"
+                        +"<td>Medida:</td>"
+                        +"<td><select name='medidaCua'>"
+                            + "<option>Metros</option>"
+                            + "<option>Centrimentos</option>"
+                            + "</select>"
+                        + "</td>"
+                        +"<td>Altura:</td>"
+                        +"<td><input type='text' name='alturaTrian'></td>"
+                        +"<td>Altura:</td>"
+                        +"<td><input type='text' name='alturaRect'></td>"
+                    + "</tr>"
+                        + "<td></td>"
+                        + "<td></td>"
+                        + "<td>Medida:</td>"
+                        + "<td><select name='medidaTrian'>"
+                            + "<option>Metros</option>"
+                            + "<option>Centrimentos</option>"
+                            + "</select>"
+                            + "</td>"
+                        + "<td>Medida:</td>"
+                        + "<td><select name='medidaRect'>"
+                            + "<option>Metros</option>"
+                            + "<option>Centrimentos</option>"
+                            + "</select>"
+                            + "</td>"
+                    + "<tr align='center'>"
+                        +"<td colspan=6><input type='submit' value='Calcular Operaciones'></td>"
+                    + "</tr>");
             ////Obtención de datos:
             double areaCua=Double.parseDouble(request.getParameter("areaCua"));
             String medidaCua=request.getParameter("medidaCua");
@@ -76,10 +106,22 @@ public class ServletConsumeClient extends HttpServlet {
             double diagonalRect=Double.parseDouble(request.getParameter("diagonalRect"));
             double alturaRect=Double.parseDouble(request.getParameter("alturaRect"));
             String medidaRect=request.getParameter("medidaRect");
+            ////
+            out.println("</table>");
+            out.println("<br><br>");
+            out.println("<table id='porqqw'>"
+                    + "<tr>"
+                        + "<td>Cuadrado</td>"
+                        + "<td>Triangulo</td>"
+                        + "<td>Rectangulo</td>"
+                    + "</tr>"
+                    + "<tr>"
+                        + "<td>"+calculaLadoPerimCuadrado(areaCua, medidaCua)+"</td>"
+                        + "<td>"+calcularPerimAreaTriangulo(baseTrian, alturaTrian, medidaTrian)+"</td>"
+                        + "<td>"+calcularBasePerimAreaRectangulo(diagonalRect, alturaRect, medidaRect)+"</td>"
+                    + "</tr>");
             
-            out.println("<br>"+calculaLadoPerimCuadrado(areaCua, medidaCua));
-            out.println("<br>"+calcularPerimAreaTriangulo(baseTrian, alturaTrian, medidaTrian));
-            out.println("<br>"+calcularBasePerimAreaRectangulo(diagonalRect, alturaRect, medidaRect));
+            out.println("</table>");
             out.println("</form>");
             out.println("</center>");
             out.println("</body>");
