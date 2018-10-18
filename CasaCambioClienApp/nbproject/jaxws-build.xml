@@ -28,7 +28,7 @@
     </target>
     <target name="wsimport-client-CasaCambioWS" depends="wsimport-init">
         <mkdir dir="${build.generated.dir}/jax-wsCache/CasaCambioWS"/>
-        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CasaCambioWS" destdir="${build.generated.dir}/jax-wsCache/CasaCambioWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8083/CasaCambioWS/CasaCambioWS?wsdl" xnocompile="true" xendorsed="true">
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/CasaCambioWS" destdir="${build.generated.dir}/jax-wsCache/CasaCambioWS" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8083/CasaCambioWS/CasaCambioWS?wsdl" xnocompile="true" xendorsed="true" package="CasaCambioWS">
             <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl"/>
             <produces dir="${build.generated.dir}/jax-wsCache/CasaCambioWS"/>
         </wsimport>
@@ -39,7 +39,7 @@
         </copy>
     </target>
     <target name="wsimport-client-clean-CasaCambioWS" depends="-init-project">
-        <delete dir="${build.generated.sources.dir}/jax-ws/webservices"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/CasaCambioWS"/>
         <delete dir="${build.generated.dir}/jax-wsCache/CasaCambioWS"/>
     </target>
     <target name="wsimport-client-generate" depends="wsimport-client-CasaCambioWS"/>

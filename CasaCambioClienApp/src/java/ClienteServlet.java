@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
-import webservices.CasaCambioWS_Service;
-import webservices.ChangeSolesToDolares;
+import WebServices.CasaCambioWS_Service;
 
 /**
  *
@@ -22,6 +21,9 @@ import webservices.ChangeSolesToDolares;
  */
 @WebServlet(urlPatterns = {"/clienteservlet"})
 public class ClienteServlet extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl")
+    private CasaCambioWS.CasaCambioWS_Service service_1;
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl")
     private CasaCambioWS_Service service;
@@ -48,11 +50,16 @@ public class ClienteServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ClienteServlet at " + request.getContextPath() + "</h1>");
-            double rode=250;
+            out.println("<h3> Casa de Cambio - Soles a Dólares </h3>");
+            out.println("<form method=get>");
+            out.println("<input type='text' name='dato' placeholder='monto en soles' >");
+            out.println("<input type='submit' value='enviar'>");
+            out.println("</form>");
+           
             //out.println("<input type='text' placeholder=monto id='rode' name='rode' >");
             //out.println("<input type='submit' >");
             
-            
+            double rode=Double.parseDouble(request.getParameter("dato"));
             out.println("<div>Cambiar "+rode+" / "+changeSolesToDolares(rode)+"</div>");
         }finally{
             out.close();
@@ -101,10 +108,19 @@ public class ClienteServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
+
+    private String changeDolarToSoles(double rode) {
+        // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
+        // If the calling of port operations may lead to race condition some synchronization is required.
+        CasaCambioWS.CasaCambioWS port = service_1.getCasaCambioWSPort();
+        return port.changeDolarToSoles(rode);
+    }
+
     private String changeSolesToDolares(double rode) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        webservices.CasaCambioWS port = service.getCasaCambioWSPort();
+        CasaCambioWS.CasaCambioWS port = service_1.getCasaCambioWSPort();
         return port.changeSolesToDolares(rode);
     }
 

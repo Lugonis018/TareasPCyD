@@ -5,9 +5,8 @@
     <client name="CasaCambioWS">
       <wsdl-url>http://localhost:8083/CasaCambioWS/CasaCambioWS?wsdl</wsdl-url>
       <local-wsdl-file>localhost_8083/CasaCambioWS/CasaCambioWS.wsdl</local-wsdl-file>
-      <package-name>webservices</package-name>
+      <package-name forceReplace="true">CasaCambioWS</package-name>
       <catalog-file>catalog.xml</catalog-file>
-      <use-dispatch>true</use-dispatch>
       <wsimport-options>
         <wsimport-option>
           <wsimport-option-name>extension</wsimport-option-name>
@@ -32,6 +31,10 @@
         <wsimport-option>
           <wsimport-option-name>xendorsed</wsimport-option-name>
           <wsimport-option-value>true</wsimport-option-value>
+        </wsimport-option>
+        <wsimport-option>
+          <wsimport-option-name>package</wsimport-option-name>
+          <wsimport-option-value>CasaCambioWS</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>
