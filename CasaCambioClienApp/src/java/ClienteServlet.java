@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+
+import WebServices.CasaCambioWS_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import static java.lang.System.out;
@@ -13,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.ws.WebServiceRef;
-import WebServices.CasaCambioWS_Service;
 
 /**
  *
@@ -22,11 +23,10 @@ import WebServices.CasaCambioWS_Service;
 @WebServlet(urlPatterns = {"/clienteservlet"})
 public class ClienteServlet extends HttpServlet {
 
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl")
-    private CasaCambioWS.CasaCambioWS_Service service_1;
-
-    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl")
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8081/CasaCambioWS/CasaCambioWS.wsdl")
     private CasaCambioWS_Service service;
+
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -108,20 +108,20 @@ public class ClienteServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    
-
     private String changeDolarToSoles(double rode) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        CasaCambioWS.CasaCambioWS port = service_1.getCasaCambioWSPort();
+        WebServices.CasaCambioWS port = service.getCasaCambioWSPort();
         return port.changeDolarToSoles(rode);
     }
 
     private String changeSolesToDolares(double rode) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        CasaCambioWS.CasaCambioWS port = service_1.getCasaCambioWSPort();
+        WebServices.CasaCambioWS port = service.getCasaCambioWSPort();
         return port.changeSolesToDolares(rode);
     }
+
+    
 
 }

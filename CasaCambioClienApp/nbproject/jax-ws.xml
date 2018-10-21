@@ -3,9 +3,9 @@
   <services/>
   <clients>
     <client name="CasaCambioWS">
-      <wsdl-url>http://localhost:8083/CasaCambioWS/CasaCambioWS?wsdl</wsdl-url>
-      <local-wsdl-file>localhost_8083/CasaCambioWS/CasaCambioWS.wsdl</local-wsdl-file>
-      <package-name forceReplace="true">CasaCambioWS</package-name>
+      <wsdl-url>http://localhost:8081/CasaCambioWS/CasaCambioWS?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_8081/CasaCambioWS/CasaCambioWS.wsdl</local-wsdl-file>
+      <package-name forceReplace="true">WebServices</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
         <wsimport-option>
@@ -22,7 +22,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>wsdlLocation</wsimport-option-name>
-          <wsimport-option-value>http://localhost:8083/CasaCambioWS/CasaCambioWS?wsdl</wsimport-option-value>
+          <wsimport-option-value>http://localhost:8081/CasaCambioWS/CasaCambioWS?wsdl</wsimport-option-value>
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>xnocompile</wsimport-option-name>
@@ -34,7 +34,7 @@
         </wsimport-option>
         <wsimport-option>
           <wsimport-option-name>package</wsimport-option-name>
-          <wsimport-option-value>CasaCambioWS</wsimport-option-value>
+          <wsimport-option-value>WebServices</wsimport-option-value>
         </wsimport-option>
       </wsimport-options>
     </client>

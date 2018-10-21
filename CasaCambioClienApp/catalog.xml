@@ -2,4 +2,6 @@
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
     <system systemId="http://localhost:8083/CasaCambioWS/CasaCambioWS?wsdl" uri="src/conf/xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.wsdl"/>
     <system systemId="http://localhost:8083/CasaCambioWS/CasaCambioWS?xsd=1" uri="src/conf/xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8083/CasaCambioWS/CasaCambioWS.xsd_1.xsd"/>
+    <system systemId="http://localhost:8081/CasaCambioWS/CasaCambioWS?wsdl" uri="src/conf/xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8081/CasaCambioWS/CasaCambioWS.wsdl"/>
+    <system systemId="http://localhost:8081/CasaCambioWS/CasaCambioWS?xsd=1" uri="src/conf/xml-resources/web-service-references/CasaCambioWS/wsdl/localhost_8081/CasaCambioWS/CasaCambioWS.xsd_1.xsd"/>
 </catalog>
