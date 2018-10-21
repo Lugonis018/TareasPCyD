@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://PaqueteWS/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://PaqueteWS/">
+
+<xs:element name="CalculaLadoPerimCuadrado" type="tns:CalculaLadoPerimCuadrado"/>
+
+<xs:element name="CalculaLadoPerimCuadradoResponse" type="tns:CalculaLadoPerimCuadradoResponse"/>
+
+<xs:element name="CalcularBasePerimAreaRectangulo" type="tns:CalcularBasePerimAreaRectangulo"/>
+
+<xs:element name="CalcularBasePerimAreaRectanguloResponse" type="tns:CalcularBasePerimAreaRectanguloResponse"/>
+
+<xs:element name="CalcularPerimAreaTriangulo" type="tns:CalcularPerimAreaTriangulo"/>
+
+<xs:element name="CalcularPerimAreaTrianguloResponse" type="tns:CalcularPerimAreaTrianguloResponse"/>
+
+<xs:complexType name="CalculaLadoPerimCuadrado">
+<xs:sequence>
+<xs:element name="area" type="xs:double"/>
+<xs:element name="medida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalculaLadoPerimCuadradoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcularPerimAreaTriangulo">
+<xs:sequence>
+<xs:element name="base" type="xs:double"/>
+<xs:element name="altura" type="xs:double"/>
+<xs:element name="medida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcularPerimAreaTrianguloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcularBasePerimAreaRectangulo">
+<xs:sequence>
+<xs:element name="diagonal" type="xs:double"/>
+<xs:element name="altura" type="xs:double"/>
+<xs:element name="medida" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="CalcularBasePerimAreaRectanguloResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

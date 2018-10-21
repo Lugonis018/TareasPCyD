@@ -5,7 +5,8 @@
  */
 package PaqueteServletWS;
 
-import WebService.ServiciosWeb_Service;
+
+import WebServices.ServiciosWeb_Service;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,6 +20,9 @@ import javax.xml.ws.WebServiceRef;
  * @author AUTONOMA
  */
 public class ServletConsumeClient extends HttpServlet {
+
+    @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8081/ServiciosWeb/ServiciosWeb.wsdl")
+    private ServiciosWeb_Service service_1;
 
     @WebServiceRef(wsdlLocation = "WEB-INF/wsdl/localhost_8083/ServiciosWeb/ServiciosWeb.wsdl")
     private ServiciosWeb_Service service;
@@ -109,7 +113,11 @@ public class ServletConsumeClient extends HttpServlet {
             ////
             out.println("</table>");
             out.println("<br><br>");
-            out.println("<table id='porqqw'>"
+            out.println("<table id='porqqw' "
+                    + "border='1'"
+                    + "style='HEIGHT:100%;WIDTH:100%;ALIGN-CONTENT: center;"
+                    + "color: teal;text-align: center;background: antiquewhite;"
+                    + "border-color: steelblue;'>"
                     + "<tr>"
                         + "<td>Cuadrado</td>"
                         + "<td>Triangulo</td>"
@@ -171,22 +179,24 @@ public class ServletConsumeClient extends HttpServlet {
     private String calculaLadoPerimCuadrado(double area, java.lang.String medida) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        WebService.ServiciosWeb port = service.getServiciosWebPort();
+        WebServices.ServiciosWeb port = service_1.getServiciosWebPort();
         return port.calculaLadoPerimCuadrado(area, medida);
     }
 
     private String calcularBasePerimAreaRectangulo(double diagonal, double altura, java.lang.String medida) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        WebService.ServiciosWeb port = service.getServiciosWebPort();
+        WebServices.ServiciosWeb port = service_1.getServiciosWebPort();
         return port.calcularBasePerimAreaRectangulo(diagonal, altura, medida);
     }
 
     private String calcularPerimAreaTriangulo(double base, double altura, java.lang.String medida) {
         // Note that the injected javax.xml.ws.Service reference as well as port objects are not thread safe.
         // If the calling of port operations may lead to race condition some synchronization is required.
-        WebService.ServiciosWeb port = service.getServiciosWebPort();
+        WebServices.ServiciosWeb port = service_1.getServiciosWebPort();
         return port.calcularPerimAreaTriangulo(base, altura, medida);
     }
+
+   
 
 }
